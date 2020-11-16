@@ -1,0 +1,11 @@
+#app {
+    color: red;
+}
+.red{
+    display: flex;
+}
+@media screen {
+    div{
+        width: 100px;
+    }
+}
