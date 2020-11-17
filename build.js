@@ -6,7 +6,7 @@ const webpackOptions = require('./webpack.config')({ NODE_ENV: 'development' })
 
 const config = {
     mode: 'production',
-    // devtool: 'inline-source-map',
+    // devtool: 'none',
     plugins: [
         new CleanWebpackPlugin(),
         new MyWebpackPlugin({ name: 'hello dongsen' })
@@ -14,9 +14,9 @@ const config = {
 }
 
 if (process.argv[process.argv.length - 1].substr(2) === 'watch') {
-    webpack(merge(config, webpackOptions)).watch({}, stats)
+    webpack(merge(webpackOptions,config)).watch({}, stats)
 } else {
-    webpack(merge(config, webpackOptions)).run(stats)
+    webpack(merge(webpackOptions,config)).run(stats)
 }
 
 function stats(err, stats) {

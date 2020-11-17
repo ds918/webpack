@@ -4,13 +4,18 @@ const MyWebpackPlugin = require('./my-webpack-plugin/src/index');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack')
 const webpackOptions = require('./webpack.config')({ NODE_ENV: 'development' })
+/*
+ * analyze the bundles distribution
+ */
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const config = {
     mode: 'development',
     devtool: 'inline-source-map',
     plugins: [
         new CleanWebpackPlugin(),
-        new MyWebpackPlugin({ name: 'hello dongsen' })
+        // new MyWebpackPlugin({ name: 'hello dongsen' }),
+        // new BundleAnalyzerPlugin()
     ],
     optimization: {
         runtimeChunk: 'single'
@@ -33,7 +38,7 @@ const options = {
  */
 // webpackDveServer.addDevServerEntrypoints(merge(config,webpackOptions), options)
 
-const compiler = webpack(merge(config, webpackOptions))
+const compiler = webpack(merge(webpackOptions, config))
 const server = new webpackDveServer(compiler, options)
 server.listen(8080)
 compiler.hooks.done.tap('webpackDveServer', (a) => {
