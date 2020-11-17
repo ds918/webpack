@@ -1,15 +1,22 @@
 const webpack = require('webpack')
+const { merge } = require('webpack-merge')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MyWebpackPlugin = require('./my-webpack-plugin/src/index');
 const webpackOptions = require('./webpack.config')({ NODE_ENV: 'development' })
-webpackOptions.plugins.push(new CleanWebpackPlugin())
-webpackOptions.plugins.push(new MyWebpackPlugin({ name: 'hello dongsen' }))
-// webpackOptions.devtool = 'nosources-source-map'
-webpackOptions.mode = 'production'
+
+const config = {
+    mode: 'production',
+    // devtool: 'inline-source-map',
+    plugins: [
+        new CleanWebpackPlugin(),
+        new MyWebpackPlugin({ name: 'hello dongsen' })
+    ]
+}
+
 if (process.argv[process.argv.length - 1].substr(2) === 'watch') {
-    webpack(webpackOptions).watch({}, stats)
+    webpack(merge(config, webpackOptions)).watch({}, stats)
 } else {
-    webpack(webpackOptions).run(stats)
+    webpack(merge(config, webpackOptions)).run(stats)
 }
 
 function stats(err, stats) {

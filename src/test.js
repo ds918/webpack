@@ -7,5 +7,5 @@
 // if (module.hot) {
 //     module.hot.accept();
 // }
-console.log('test');
+// console.log('test');
 window.namer = "just do it"

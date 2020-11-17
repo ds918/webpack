@@ -6,4 +6,4 @@ export function action() {
     return 'action'
 }
 
-console.log(__resourceQuery,23);
+// console.log(__resourceQuery,23);

@@ -1,2 +1,3 @@
-import '../my-loader/src/index?name=dongsen!./index.css'
-console.log('dongsennn');
+import('!!../my-loader/src/index!css-loader!./index.css').then(res => {
+    console.log(res);
+})
