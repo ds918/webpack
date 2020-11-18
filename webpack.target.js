@@ -4,10 +4,11 @@ const { merge } = require('webpack-merge')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const config = (env) => ({
-    mode: env.NODE_ENV,
+    mode: 'production',
     entry: {
         target: [path.resolve(__dirname, 'src/target.js')],
     },
+    // devtool: 'inline-source-map',
     plugins: [
         new webpack.ProgressPlugin({
             profile: false

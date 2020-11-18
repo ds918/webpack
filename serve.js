@@ -14,7 +14,7 @@ const config = {
     devtool: 'inline-source-map',
     plugins: [
         new CleanWebpackPlugin(),
-        // new MyWebpackPlugin({ name: 'hello dongsen' }),
+        new MyWebpackPlugin({ name: 'hello dongsen' }),
         // new BundleAnalyzerPlugin()
     ],
     optimization: {
