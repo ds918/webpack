@@ -1,16 +1,7 @@
-  
-// require('react');
-// require(['react-dom']);
-// import { foo, something } from './dep_one.js';
+// require('./vendor')
 
-// something(); 
-// foo(); 
+// import './vendor'
 
-// var fooboo = document.querySelectorAll('.foo');
-// console.log(fooboo);
-
-// System.import('./dep_two.js').then((module) => {
-// 	let hello = module.hello;
-
-// 	hello();
+// import('./vendor').then(res => {
+//     console.log(res);
 // })

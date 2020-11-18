@@ -1,4 +1,5 @@
 import '../index.html'
+import _ from 'lodash'
 import style from './index.css'
 import styles from './child.css'
 

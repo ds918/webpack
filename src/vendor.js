@@ -1,1 +1,1 @@
-console.log('vendor');
+console.log(_.concat(1,'2'));

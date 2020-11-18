@@ -12,7 +12,6 @@ class MyWebpackPlugin {
       // console.log(a, b);
     })
     compiler.hooks.make.tap('MyWebpackPlugin', (compilation) => {
-
     })
     compiler.hooks.shouldEmit.tap('MyWebpackPlugin', (compilation) => {
       return true

@@ -4,16 +4,25 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 
-module.exports = (env) => {
+module.exports = (env, argv) => {
     return {
         mode: env.NODE_ENV,
-        entry: {
-            main: [path.resolve(__dirname, 'src/index.js')],
-            vendor: [path.resolve(__dirname, 'src/vendor.js')],
-        },
+        entry: () => ({
+            lodash: ['lodash'],
+            main: {
+                import: [path.resolve(__dirname, 'src/index.js')],
+                dependOn: 'lodash'
+            },
+            vendor: {
+                import: path.resolve(__dirname, 'src/vendor.js'),
+                filename: '[name].js',
+                dependOn: 'lodash',
+                // chunkLoading: 'jsonp'
+            },
+        }),
         output: {
-            filename: '[name].js',
-            chunkFilename: '[name].js',
+            filename: '[name].[contenthash].js',
+            chunkFilename: '[name]-[id].js',
             path: path.resolve(__dirname, 'dist'),
         },
         module: {
