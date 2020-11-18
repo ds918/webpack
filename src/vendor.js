@@ -1,1 +1,0 @@
-console.log(_.concat(1,'2'));

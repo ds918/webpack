@@ -8,21 +8,23 @@ module.exports = (env, argv) => {
     return {
         mode: env.NODE_ENV,
         entry: () => ({
-            lodash: ['lodash'],
+            vendor: {
+                import: ['lodash', 'moment', 'echarts'],
+                filename: 'vendor.[contenthash].js'
+            },
             main: {
                 import: [path.resolve(__dirname, 'src/index.js')],
-                dependOn: 'lodash'
+                dependOn: 'vendor'
             },
-            vendor: {
-                import: path.resolve(__dirname, 'src/vendor.js'),
-                filename: '[name].js',
-                dependOn: 'lodash',
+            another: {
+                import: path.resolve(__dirname, 'src/another.js'),
+                dependOn: 'vendor',
                 // chunkLoading: 'jsonp'
-            },
+            }
         }),
         output: {
-            filename: '[name].[contenthash].js',
-            chunkFilename: '[name]-[id].js',
+            filename: '[name].js',
+            chunkFilename: '[name].js',
             path: path.resolve(__dirname, 'dist'),
         },
         module: {
