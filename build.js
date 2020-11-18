@@ -3,20 +3,29 @@ const { merge } = require('webpack-merge')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MyWebpackPlugin = require('./my-webpack-plugin/src/index');
 const webpackOptions = require('./webpack.config')({ NODE_ENV: 'development' })
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const Manifest = require('webpack-manifest-plugin');
 
 const config = {
     mode: 'production',
     // devtool: 'none',
     plugins: [
         new CleanWebpackPlugin(),
-        new MyWebpackPlugin({ name: 'hello dongsen' })
-    ]
+        // new Manifest()
+        // new MyWebpackPlugin({ name: 'hello dongsen' }),
+        // new BundleAnalyzerPlugin()
+    ],
+    optimization: {
+        // runtimeChunk: 'single',
+        splitChunks: {
+        }
+    }
 }
 
 if (process.argv[process.argv.length - 1].substr(2) === 'watch') {
-    webpack(merge(webpackOptions,config)).watch({}, stats)
+    webpack(merge(webpackOptions, config)).watch({}, stats)
 } else {
-    webpack(merge(webpackOptions,config)).run(stats)
+    webpack(merge(webpackOptions, config)).run(stats)
 }
 
 function stats(err, stats) {

@@ -7,12 +7,13 @@
     "init": "webpack init",
     "watch": "webpack --watch  --env NODE_ENV=development",
     "serve": "webpack serve --env NODE_ENV=development",
+    "build:target": "webpack --config webpack.target.js --env NODE_ENV=production",
     "serve:dev": "webpack serve --env NODE_ENV=development",
     "serve:pro": "webpack serve --env NODE_ENV=production",
     "build": "webpack --env NODE_ENV=development",
     "build:dev": "webpack --env NODE_ENV=development",
     "build:pro": "webpack --env NODE_ENV=production",
-    "stats": "webpack --json stats.json",
+    "stats": "webpack --json stats.json  --env NODE_ENV=production",
     "analyze": "webpack --analyze",
     "plugin": "webpack plugin",
     "loader": "webpack loader"
@@ -38,6 +39,7 @@
     "webpack-bundle-analyzer": "^4.1.0",
     "webpack-cli": "^4.2.0",
     "webpack-dev-server": "^3.11.0",
+    "webpack-manifest-plugin": "^2.2.0",
     "webpack-merge": "^5.4.0"
   },
   "dependencies": {
