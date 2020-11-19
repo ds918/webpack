@@ -65,6 +65,16 @@ module.exports = (env, argv) => {
                             sourceMap: false
                         }
                     }]
+                },
+                {
+                    test: /\\.js$/i,
+                    exclude: /node_modules/,
+                    use: [{
+                        loader: 'babel-loader',
+                        options: {
+                            presets: ['@babel/preset-env']
+                        }
+                    }]
                 }
             ]
         },
@@ -75,9 +85,6 @@ module.exports = (env, argv) => {
             new HtmlWebpackPlugin({
                 template: './index.html',
                 title: 'hello world',
-            }),
-            new webpack.BannerPlugin({
-                banner: (yourVariable) => {;return `yourVariable: ${yourVariable.filename}`; }
             })
             // new MiniCssExtractPlugin()
         ]
