@@ -2,3 +2,4 @@ node_modules
 stats.json
 package-lock.json
 dist
+debug.log

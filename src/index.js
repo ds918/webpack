@@ -3,22 +3,24 @@ import _ from 'lodash'
 import style from './index.css'
 import styles from './child.css'
 
-setTimeout(() => {
+// setTimeout(() => {
     import(
         /* webpackPreload: true */
-        /* webpackChunkName: "my-chunk-name" */
+        // /* webpackChunkName: "my-chunk-name" */
         './test')
     import(
-        /* webpackChunkName: "my-chunk-name" */
+        // /* webpackChunkName: "my-chunk-name" */
         /* webpackPrefetch: true */
         /* webpackExports: ["name","action"] */
         `./add.js`).then((resizeBy) => {
             // console.log(resizeBy.name());
         })
-}, 3000);
+// }, 3000);
 require('./add?a')
 // console.log(import.meta.webpack);
 // console.log(window.namer);
+
+console.log('1');
 
 
 

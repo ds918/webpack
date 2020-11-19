@@ -7,23 +7,40 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = (env, argv) => {
     return {
         mode: env.NODE_ENV,
+        target: 'web',
         entry: () => ({
-            lodash: ['lodash','moment'],
             main: {
                 import: [path.resolve(__dirname, 'src/index.js')],
-                dependOn: 'lodash'
+                dependOn: 'vendor'
+            },
+            another: {
+                import: path.resolve(__dirname, 'src/another.js'),
+                dependOn: 'vendor'
             },
             vendor: {
-                import: path.resolve(__dirname, 'src/vendor.js'),
-                filename: '[name].js',
-                dependOn: 'lodash',
-                // chunkLoading: 'jsonp'
+                import: ['lodash', 'core-js'],
+                filename: 'vendor.[contenthash].js'
             },
         }),
+        externals: {
+            moment: 'moment',
+            echarts: 'echarts'
+        },
         output: {
-            filename: '[name].[contenthash].js',
-            chunkFilename: '[name]-[id].js',
+            charset: true,
+            filename: '[name].bundle.js',
+            chunkFilename: '[name].js',
+            chunkLoading: 'jsonp',
+            chunkFormat: 'array-push',
+            crossOriginLoading: 'anonymous',
             path: path.resolve(__dirname, 'dist'),
+            environment: {
+                arrowFunction: true,
+                const: true
+            },
+            sourcePrefix: '\t',
+            pathinfo: false,
+            library: 'MyLibrary'
         },
         module: {
             rules: [
@@ -58,6 +75,9 @@ module.exports = (env, argv) => {
             new HtmlWebpackPlugin({
                 template: './index.html',
                 title: 'hello world',
+            }),
+            new webpack.BannerPlugin({
+                banner: (yourVariable) => {;return `yourVariable: ${yourVariable.filename}`; }
             })
             // new MiniCssExtractPlugin()
         ]

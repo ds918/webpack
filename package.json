@@ -6,7 +6,7 @@
   "scripts": {
     "init": "webpack init",
     "watch": "webpack --watch  --env NODE_ENV=development",
-    "serve": "webpack serve --env NODE_ENV=development",
+    "serve": "webpack serve --env NODE_ENV=development --mode=development",
     "build:target": "webpack --config webpack.target.js --env NODE_ENV=development",
     "serve:dev": "webpack serve --env NODE_ENV=development",
     "serve:pro": "webpack serve --env NODE_ENV=production",

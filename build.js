@@ -8,8 +8,13 @@ const Manifest = require('webpack-manifest-plugin');
 
 const config = {
     mode: 'production',
-    // devtool: 'none',
+    // devtool: 'source-map',
     plugins: [
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: JSON.stringify('production')
+            }
+        }),
         new CleanWebpackPlugin(),
         // new Manifest()
         // new MyWebpackPlugin({ name: 'hello dongsen' }),

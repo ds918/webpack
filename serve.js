@@ -13,6 +13,11 @@ const config = {
     mode: 'development',
     devtool: 'inline-source-map',
     plugins: [
+        new webpack.DefinePlugin({
+            'process.env': {
+                NODE_ENV: JSON.stringify('development')
+            }
+        }),
         new CleanWebpackPlugin(),
         new MyWebpackPlugin({ name: 'hello dongsen' }),
         // new BundleAnalyzerPlugin()
