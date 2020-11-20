@@ -1,6 +1,6 @@
 const path = require('path');
-const output =  require('./output')
-const plugins =  require('./plugins').plugins
+const output = require('./output')
+const plugins = require('./plugins').plugins
 
 module.exports = (env, argv) => {
     return {
@@ -20,10 +20,7 @@ module.exports = (env, argv) => {
                 dependOn: 'vendor'
             }
         }),
-        externals: {
-            moment: 'moment',
-            echarts: 'echarts'
-        },
+        externals: {},
         output,
         module: {
             rules: [
