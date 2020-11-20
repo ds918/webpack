@@ -1,8 +1,6 @@
 const path = require('path');
-const webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
+const output =  require('./output')
+const plugins =  require('./plugins').plugins
 
 module.exports = (env, argv) => {
     return {
@@ -26,22 +24,7 @@ module.exports = (env, argv) => {
             moment: 'moment',
             echarts: 'echarts'
         },
-        output: {
-            charset: true,
-            filename: '[name].bundle.js',
-            chunkFilename: '[name].js',
-            chunkLoading: 'jsonp',
-            chunkFormat: 'array-push',
-            crossOriginLoading: 'anonymous',
-            path: path.resolve(__dirname, 'dist'),
-            environment: {
-                arrowFunction: true,
-                const: true
-            },
-            sourcePrefix: '\t',
-            pathinfo: true,
-            library: ['MyLibrary', '[name]']
-        },
+        output,
         module: {
             rules: [
                 {
@@ -77,15 +60,6 @@ module.exports = (env, argv) => {
                 }
             ]
         },
-        plugins: [
-            new webpack.ProgressPlugin({
-                profile: false
-            }),
-            new HtmlWebpackPlugin({
-                template: './index.html',
-                title: 'hello world',
-            })
-            // new MiniCssExtractPlugin()
-        ]
+        plugins
     }
 }
