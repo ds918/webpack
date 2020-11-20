@@ -9,6 +9,10 @@ module.exports = (env, argv) => {
         mode: env.NODE_ENV,
         target: 'web',
         entry: () => ({
+            vendor: {
+                import: ['lodash', 'core-js'],
+                filename: 'vendor.[contenthash].js'
+            },
             main: {
                 import: [path.resolve(__dirname, 'src/index.js')],
                 dependOn: 'vendor'
@@ -16,11 +20,7 @@ module.exports = (env, argv) => {
             another: {
                 import: path.resolve(__dirname, 'src/another.js'),
                 dependOn: 'vendor'
-            },
-            vendor: {
-                import: ['lodash', 'core-js'],
-                filename: 'vendor.[contenthash].js'
-            },
+            }
         }),
         externals: {
             moment: 'moment',
@@ -39,8 +39,8 @@ module.exports = (env, argv) => {
                 const: true
             },
             sourcePrefix: '\t',
-            pathinfo: false,
-            library: 'MyLibrary'
+            pathinfo: true,
+            library: ['MyLibrary', '[name]']
         },
         module: {
             rules: [
@@ -53,28 +53,27 @@ module.exports = (env, argv) => {
                 },
                 {
                     test: /\.css$/i,
-                    use: [{
-                        loader: 'style-loader',
-                        options: {
-                            // injectType: 'linkTag',
-                            // sourceMap: false
+                    use: [
+                        {
+                            loader: 'style-loader',
+                            options: {
+                                // injectType: 'linkTag',
+                                // sourceMap: false
+                            }
+                        },
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                sourceMap: false
+                            }
+                        },
+                        {
+                            loader: 'postcss-loader',
+                            options: {
+                                sourceMap: false
+                            }
                         }
-                    }, {
-                        loader: 'css-loader',
-                        options: {
-                            sourceMap: false
-                        }
-                    }]
-                },
-                {
-                    test: /\\.js$/i,
-                    exclude: /node_modules/,
-                    use: [{
-                        loader: 'babel-loader',
-                        options: {
-                            presets: ['@babel/preset-env']
-                        }
-                    }]
+                    ]
                 }
             ]
         },

@@ -4,7 +4,6 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MyWebpackPlugin = require('./my-webpack-plugin/src/index');
 const webpackOptions = require('./webpack.config')({ NODE_ENV: 'development' })
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const Manifest = require('webpack-manifest-plugin');
 
 const config = {
     mode: 'production',
@@ -16,7 +15,6 @@ const config = {
             }
         }),
         new CleanWebpackPlugin(),
-        // new Manifest()
         // new MyWebpackPlugin({ name: 'hello dongsen' }),
         // new BundleAnalyzerPlugin()
     ],
