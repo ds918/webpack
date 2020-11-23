@@ -7,7 +7,6 @@ module.exports = {
             profile: false
         }),
         new HtmlWebpackPlugin({
-            filename: 'index.[contenthash].html',
             template: './index.html',
             title: 'hello world',
         })
