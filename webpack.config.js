@@ -28,32 +28,21 @@ module.exports = (env, argv) => {
                     test: /\.html$/i,
                     loader: 'html-loader',
                     options: {
-                        esModule: true
+                        attributes: false,
+                        // esModule: true,
                     }
                 },
                 {
-                    test: /\.css$/i,
+                    test: /\.(png|jpe?g|gif)$/i,
                     use: [
                         {
-                            loader: 'style-loader',
+                            loader: 'file-loader',
                             options: {
-                                // injectType: 'linkTag',
-                                // sourceMap: false
+                                name: '[emoji].[ext]',
+                                outputPath: 'assets/img'
                             }
                         },
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                sourceMap: false
-                            }
-                        },
-                        {
-                            loader: 'postcss-loader',
-                            options: {
-                                sourceMap: false
-                            }
-                        }
-                    ]
+                    ],
                 }
             ]
         },

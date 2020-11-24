@@ -1,6 +1,5 @@
-import '../index.html'
-import style from './index.css'
-import styles from './child.css'
+import '../assets/index.html'
+import styles from '../assets/css/child.css'
 
 
 import(
