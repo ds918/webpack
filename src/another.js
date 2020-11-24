@@ -1,9 +1,10 @@
 // import '../assets/img/30422.jpg'
 import '../assets/css/index.css'
 import '../assets/css/add.css'
-import img from '../assets/img/30422.jpg'
+import img from '../assets/img/cloud.jpg'
+import person from '../assets/img/person/30422.jpg'
 
-const pic = new Image(220, 347)
+const pic = new Image(250, 185)
 pic.src = img
 document.querySelector('#app').appendChild(pic)
 
@@ -15,5 +16,8 @@ if (module.hot) {
     module.hot.accept()
     module.hot.dispose(() => {
         document.querySelector('#app').removeChild(pic)
+        let a = new Image(220, 347)
+        a.src = person
+        document.querySelector('#app').appendChild(a)
     })
 }

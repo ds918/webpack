@@ -9,4 +9,4 @@
 // }
 // console.log('test');
 this.namer = "just do it"
-console.log(process.env.NODE_ENV);
+// console.log(process.env.NODE_ENV);
