@@ -24,6 +24,31 @@ const config = {
     ],
     optimization: {
         runtimeChunk: 'single'
+    },
+    module: {
+        rules: [
+            {
+                test: /\.css$/i,
+                use: [
+                    {
+                        loader: 'style-loader',
+                        options: {
+                            // injectType: 'linkTag',
+                        }
+                    },
+                    {
+                        loader: 'css-loader',
+                        options: {
+                        }
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                        }
+                    }
+                ]
+            }
+        ]
     }
 }
 

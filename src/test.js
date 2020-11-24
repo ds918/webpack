@@ -8,4 +8,5 @@
 //     module.hot.accept();
 // }
 // console.log('test');
-window.namer = "just do it"
+this.namer = "just do it"
+console.log(process.env.NODE_ENV);
