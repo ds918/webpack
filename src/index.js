@@ -1,7 +1,6 @@
 import '../assets/index.html'
 import styles from '../assets/css/child.css'
 
-
 import(
     /* webpackPreload: true */
     // /* webpackChunkName: "my-chunk-name" */
@@ -13,7 +12,7 @@ import(
     `./add.js`)
 
 if (module.hot) {
-    module.hot.accept()
+    // module.hot.accept()
 }
 
 

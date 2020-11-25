@@ -21,9 +21,8 @@ const config = {
             filename: 'assets/css/[name].[contenthash].css',
             chunkFilename: 'assets/css/[name].[contenthash].css',
             linkType: 'text/css'
-        })
+        }),
         // new MyWebpackPlugin({ name: 'hello dongsen' }),
-        // new BundleAnalyzerPlugin()
     ],
     module: {
         rules: [
@@ -80,7 +79,10 @@ const config = {
     }
 }
 
-if (process.argv[process.argv.length - 1].substr(2) === 'watch') {
+// analyzer
+if(process.argv.includes('--analyze')) config.plugins.push(new BundleAnalyzerPlugin())
+
+if (process.argv.includes('--watch')) {
     webpack(merge(webpackOptions, config)).watch({}, stats)
 } else {
     webpack(merge(webpackOptions, config)).run(stats)
