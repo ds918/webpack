@@ -86,7 +86,7 @@ module.exports = (env, argv) => {
                                     // 转化 publicPath
                                     /**
                                      * @param { __webpack_public_path__ } 等同于 output.publicPath
-                                     * @tips 可以在入口文件 ( main.js/index.js ) 中修改 __webpack_public_path__ ( output.publicPath )
+                                     * @tips 可以在入口文件 ( main.js/index.js ) 中修改 __webpack_public_path__ ( output.publicPath ), 但是只是针对开发模式
                                     */
                                     p = p.replace(/\\\\/gi, '/')
                                     return `__webpack_public_path__ + ${p}`

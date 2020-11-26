@@ -21,7 +21,7 @@
 
     /* transform: translateX(100%); */
 
-    /* background-image: url('../img/cloud.jpg'); */
-    background-image: url('@/cloud.jpg');
+    background-image: url('../img/cloud.jpg');
+    /* background-image: url('~@/cloud.jpg'); */
   }
 }

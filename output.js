@@ -27,5 +27,5 @@ module.exports = {
     // library: ['MyLibrary', '[name]'],
     // scriptType: 'module',
     // libraryTarget: 'umd',
-    publicPath: './'
+    publicPath: '/', // TODO 使用相对路径无效, 当前使用的绝对路径
 }

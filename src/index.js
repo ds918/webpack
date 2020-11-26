@@ -24,10 +24,6 @@ if (module.hot) {
 
 
 
-
-
-
-
 if (module.hot) {
     // module.hot.accept('./test', () => {
     // })
