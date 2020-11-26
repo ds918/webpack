@@ -1,0 +1,7 @@
+{
+    "rules": {},
+    "extends": ["stylelint-config-standard", "stylelint-scss"],
+    "ignoreFiles": [
+        "./dist/assets/css/*"
+    ]
+}

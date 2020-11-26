@@ -1,5 +1,7 @@
-module.exports = {
+module.exports = () => {
+  return ({
     plugins: [
-        ['autoprefixer']
+      ['autoprefixer']
     ]
+  })
 }

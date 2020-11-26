@@ -1,3 +1,4 @@
+const path = require('path');
 const { merge } = require('webpack-merge')
 const webpackDveServer = require('webpack-dev-server');
 const MyWebpackPlugin = require('./my-webpack-plugin/src/index');
@@ -39,6 +40,11 @@ const config = {
                     {
                         loader: 'css-loader',
                         options: {
+                            url: true,
+                            modules: {
+                                namedExport: true,
+                                localIdentName: '[name]__[local]--[hash:6]'
+                            }
                         }
                     },
                     {
@@ -49,6 +55,11 @@ const config = {
                 ]
             }
         ]
+    },
+    resolve: {
+        alias: {
+            '@': path.resolve(__dirname, 'src')
+        }
     }
 }
 

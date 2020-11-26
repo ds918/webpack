@@ -88,6 +88,7 @@ module.exports = (env, argv) => {
                                      * @param { __webpack_public_path__ } 等同于 output.publicPath
                                      * @tips 可以在入口文件 ( main.js/index.js ) 中修改 __webpack_public_path__ ( output.publicPath )
                                     */
+                                    p = p.replace(/\\\\/gi, '/')
                                     return `__webpack_public_path__ + ${p}`
                                 },
                                 useRelativePath: true, // 生成相对的url的地址
