@@ -30,6 +30,31 @@ const config = {
         rules: [
             {
                 test: /\.css$/i,
+                sideEffects: true,
+                exclude: [/\.module\.css$/i],
+                use: [
+                    {
+                        loader: 'style-loader',
+                        options: {
+                            // injectType: 'linkTag',
+                        }
+                    },
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            url: true,
+                        }
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                        }
+                    }
+                ],
+            },
+            {
+                test: /\.module\.css$/i,
+                sideEffects: true,
                 use: [
                     {
                         loader: 'style-loader',
@@ -42,7 +67,7 @@ const config = {
                         options: {
                             url: true,
                             modules: {
-                                namedExport: true,
+                                // namedExport: true,
                                 localIdentName: '[name]__[local]--[hash:6]'
                             }
                         }
@@ -55,11 +80,6 @@ const config = {
                 ]
             }
         ]
-    },
-    resolve: {
-        alias: {
-            '@': path.resolve(__dirname, 'src')
-        }
     }
 }
 

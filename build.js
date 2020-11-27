@@ -34,7 +34,7 @@ const config = {
                         options: {
                             esModule: true,
                             modules: {
-                                namedExport: true
+                                // namedExport: true
                             }
                         }
                     },
@@ -42,7 +42,7 @@ const config = {
                         loader: 'css-loader',
                         options: {
                             modules: {
-                                namedExport: true,
+                                // namedExport: true,
                                 localIdentName: '[name]__[local]--[hash:6]'
                             }
                         }

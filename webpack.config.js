@@ -99,6 +99,11 @@ module.exports = (env, argv) => {
                 }
             ]
         },
-        plugins
+        plugins,
+        resolve: {
+            alias: {
+                '@': path.resolve(__dirname, 'src')
+            }
+        }
     }
 }

@@ -1,5 +1,4 @@
 import '../assets/index.html'
-import styles from '../assets/css/child.css'
 
 import(
     /* webpackPreload: true */
