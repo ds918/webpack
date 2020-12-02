@@ -30,7 +30,6 @@ const config = {
         rules: [
             {
                 test: /\.css$/i,
-                sideEffects: true,
                 exclude: [/\.module\.css$/i],
                 use: [
                     {
@@ -42,7 +41,9 @@ const config = {
                     {
                         loader: 'css-loader',
                         options: {
-                            url: true,
+                            importLoaders: 0,
+                            url: true, // 解析 url('') => require(''), 允许使用 url()
+                            import: true, // 解析 @import => require(''), 允许使用 @import
                         }
                     },
                     {
@@ -54,7 +55,6 @@ const config = {
             },
             {
                 test: /\.module\.css$/i,
-                sideEffects: true,
                 use: [
                     {
                         loader: 'style-loader',
@@ -65,7 +65,7 @@ const config = {
                     {
                         loader: 'css-loader',
                         options: {
-                            url: true,
+                            // importLoaders: 2,
                             modules: {
                                 // namedExport: true,
                                 localIdentName: '[name]__[local]--[hash:6]'
@@ -97,7 +97,7 @@ const options = {
 /*
  *  打包 HMR 文件代码, 但是 webpack 目前自带了打包文件
  */
-// webpackDveServer.addDevServerEntrypoints(merge(config,webpackOptions), options)
+// webpackDveServer.addDevServerEntrypoints(merge(webpackOptions, config), options)
 
 const compiler = webpack(merge(webpackOptions, config))
 const server = new webpackDveServer(compiler, options)

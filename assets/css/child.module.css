@@ -1,7 +1,16 @@
-.name {
-  color: blanchedalmond;
+:root {
+  --first-color: #488cff;
+  --second-color: #ffff8c;
 }
 
-.boxss {
-  color: red;
+:local .firstParagraph {
+  background-color: var(--first-color);
+  color: var(--second-color);
+  display: flex;
+  flex: 1 1 calc(1vw);
+}
+
+.secondParagraph {
+  background-color: var(--second-color);
+  color: var(--first-color);
 }

@@ -28,14 +28,33 @@ const config = {
         rules: [
             {
                 test: /\.css$/i,
+                exclude: [/\.module\.css$/i],
                 use: [
                     {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
                             esModule: true,
-                            modules: {
-                                // namedExport: true
-                            }
+                        }
+                    },
+                    {
+                        loader: 'css-loader',
+                        options: {
+                        }
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                        }
+                    }
+                ]
+            },
+            {
+                test: /\.module\.css$/i,
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            esModule: true,
                         }
                     },
                     {
@@ -53,7 +72,7 @@ const config = {
                         }
                     }
                 ]
-            }
+            },
         ]
     },
     optimization: {
@@ -80,7 +99,7 @@ const config = {
 }
 
 // analyzer
-if(process.argv.includes('--analyze')) config.plugins.push(new BundleAnalyzerPlugin())
+if (process.argv.includes('--analyze')) config.plugins.push(new BundleAnalyzerPlugin())
 
 if (process.argv.includes('--watch')) {
     webpack(merge(webpackOptions, config)).watch({}, stats)

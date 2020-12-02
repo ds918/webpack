@@ -7,11 +7,12 @@
 
 
 // ================ css-loader
-import style from '../assets/css/index.css'
-// import styles from 'animate.css/animate.css'
-// import modulecss from '../assets/css/child.module.css'
-console.log(style);
-// console.log(style, styles, modulecss);
+// import 'animate.css/animate.css';
+// import 'normalize.css/normalize.css';
+import modulecss from '../assets/css/child.module.css'
+// import '../assets/css/index.css'
+console.log(modulecss)
+document.querySelector('#app').className = modulecss.firstParagraph
 // ================
 
 

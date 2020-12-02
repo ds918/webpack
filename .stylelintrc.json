@@ -1,7 +1,11 @@
 {
     "rules": {},
-    "extends": ["stylelint-config-standard", "stylelint-scss"],
+    "extends": [
+        "stylelint-config-standard",
+        "stylelint-scss"
+    ],
     "ignoreFiles": [
-        "./dist/assets/css/*"
+        "./dist/**/*.css",
+        "./node_modules/**/*.css"
     ]
 }
